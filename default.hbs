@@ -1,31 +1,43 @@
 <!DOCTYPE html>
 <html>
 <head>
-    {{! Document Settings }}
-    <meta charset="UTF-8">
-    <title>{{meta_title}}</title>
-    <meta name="description" content="{{meta_description}}" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="shortcut icon" href="{{asset "/favicon.ico"}}">
-    <link rel="stylesheet" type="text/css" href="{{asset "css/style.css"}}" />
-    <!--[if lt IE 9]>
-    <script src="{{asset "js/html5.js"}}"></script>
-    <![endif]-->
+	{{! Document Settings }}
+	<meta charset="utf-8">
 
-    {{! Ghost outputs important style and meta data with this tag }}
-    {{ghost_head}}
+	{{! Page Meta }}
+	<title>{{meta_title}}</title>
+	<meta name="description" content="{{meta_description}}" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="shortcut icon" href="{{asset "/favicon.ico"}}">
+
+	{{! Styles }}
+	<link rel="stylesheet" type="text/css" href="{{asset "css/style.css"}}" />
+	{{! Theme settings }}
+	<!--[if lt IE 9]>
+	<script src="{{asset "js/html5.js"}}"></script>
+	<![endif]-->
+
+	{{! Ghost outputs important style and meta data with this tag }}
+	{{ghost_head}}
 </head>
-<body>
+<body class="{{body_class}}">
+	<div id="page" class="site">
+		{{! The tag below includes the theme header - partials/header.hbs }}
+		{{> header}}
+		{{! Everything else gets inserted here }}
+		{{{body}}}
+		{{! The tag below includes the theme header - partials/sidebar.hbs }}
+		{{> sidebar}}
+		{{! The tag below includes the theme footer - partials/footer.hbs }}
+		{{> footer}}
+		<div class="overlay"></div>
+	</div><!-- #page -->
 
-        {{! The tag below includes the theme header - partials/header.hbs }}
-        {{> header}}
-        {{! Everything else gets inserted here }}
-        {{{body}}}
-        {{! The tag below includes the theme header - partials/sidebar.hbs }}
-        {{> sidebar}}
-        {{! The tag below includes the theme footer - partials/footer.hbs }}
-        {{> footer}}
+	<script type="text/javascript" src="{{asset "js/jquery.js"}}"></script>
+	{{!-- Ghost outputs important scripts and data with this tag --}}
+	{{ghost_foot}}
 
-<script type="text/javascript" src="{{asset "js/base.js"}}"></script>
+	{{! JavaScript files }}
+	<script type="text/javascript" src="{{asset "js/base.js"}}"></script>
 </body>
 </html>
