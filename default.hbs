@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {{! Document Settings }}
+    <meta charset="UTF-8">
+    <title>{{meta_title}}</title>
+    <meta name="description" content="{{meta_description}}" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="{{asset "/favicon.ico"}}">
+    <link rel="stylesheet" type="text/css" href="{{asset "css/style.css"}}" />
+    <!--[if lt IE 9]>
+    <script src="{{asset "js/html5.js"}}"></script>
+    <![endif]-->
+
+    {{! Ghost outputs important style and meta data with this tag }}
+    {{ghost_head}}
+</head>
+<body>
+
+        {{! The tag below includes the theme header - partials/header.hbs }}
+        {{> header}}
+        {{! Everything else gets inserted here }}
+        {{{body}}}
+        {{! The tag below includes the theme header - partials/sidebar.hbs }}
+        {{> sidebar}}
+        {{! The tag below includes the theme footer - partials/footer.hbs }}
+        {{> footer}}
+
+<script type="text/javascript" src="{{asset "js/base.js"}}"></script>
+</body>
+</html>
